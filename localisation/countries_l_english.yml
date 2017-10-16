@@ -2508,7 +2508,13 @@
  YUN_militarism:0 "Yunnan Clique"
  YUN_religious:0 "Holy Nanzhao Kingdom"
  YUN_authoritarian:0 "Kunming Military Organisation"
- YUN_absolute_monarchy:0 " Imperialist Empire of Dail"
+ YUN_absolute_monarchy:0 "Han Dynasty"
+ YUN_fascist:0 "Free Fascist Warlord States of Yunnan"
+ YUN_nationalism:0 "Greater Yunnan Clique"
+ YUN_national_socialist:0 "Empire of the Black Dragon"
+ YUN_fascist_monarchy:0 "United Mandate of Yunnan"
+ YUN_leninism:0 "Dail Commune"
+ YUN_stalinism:0 "Peoples Republic of Yunnan
 
 
 # Faction Names (Base Game)
