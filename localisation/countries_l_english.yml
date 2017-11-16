@@ -3229,6 +3229,37 @@
  OMA_militarism_DEF:0 "The Omani Military Government"
  OMA_fascist_monarchy_DEF:0 "The Empire of Oman"
  OMA_authoritarian_DEF:0 "The State of Oman"
+ TIB_absolute_monarchy:0 "Kingdom of Tibet
+ TIB_fascist_monarchy:"Grand Theocracy of Tibet"
+ TIB_leninism:0 "Monastic Commune of Tibet"
+ TIB_nationalism:0 "United Tibetian Union"
+ TIB_revisionism:0 "Oriental Socialist Republic"
+ TIB_absolute_monarchy_DEF:0 "The Kingdom of Tibet
+ TIB_fascist_monarchy_DEF:"The Grand Theocracy of Tibet"
+ TIB_leninism_DEF:0 "The Monastic Commune of Tibet"
+ TIB_nationalism_DEF:0 "The United Tibetian Union"
+ TIB_revisionism_DEF:0 "The Oriental Socialist Republic"
+ TIB_absolute_monarchy_ADJ:0 "Tibetan"
+ TIB_fascist_monarchy_ADJ:"Tibetian"
+ TIB_leninism_ADJ:0 "Tibetian"
+ TIB_nationalism_ADJ:0 "Tibetian"
+ TIB_revisionism_ADJ:0 "Tibetian"
+ SIK_stalinism:0 "Sinkiang Soviet Republic"
+ SIK_religious:0 "Islamic State of East Turkistan"
+ SIK_leninism:0 "Xinjiang Syndicate"
+ SIK_fascism:0 " Uygher Unitary State"
+ SIK_national_socialism:0 " Nationalist-Islamic Republic"
+ SIK_stalinism_DEF:0 "The Sinkiang Soviet Republic"
+ SIK_religious_DEF:0 "The Islamic State of East Turkistan"
+ SIK_leninism_DEF:0 "The Xinjiang Syndicate"
+ SIK_fascism_DEF:0 " The Uygher Unitary State"
+ SIK_national_socialism_DEF:0 "The Nationalist-Islamic Republic"
+ SIK_stalinism_ADJ:0 "Sinkiang"
+ SIK_religious_ADJ:0 "Eastern Turkistani"
+ SIK_leninism_ADJ:0 "Xinjiang"
+ SIK_fascism_ADJ:0 "Uygher"
+ SIK_national_socialism_ADJ:0 "Eastern Turkistani"
+ 
 
 # Faction Names (Base Game)
  
