@@ -4,4 +4,418 @@
 
 add_namespace = political
 
-#Obsolete they cause major game breaking bugs because these events did not work with our current system, have to be reworked together with advisors for the new ideologies. -Mbites
+# Anarchism Gaining Traction
+country_event = {
+	id = political.1
+	title = political.1.t
+	desc = political.1.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_government = anarchism }
+	}
+	
+	# Seek government support
+	option = {
+		name = political.1.a
+		trigger = {
+			OR = {
+				NOT = { tag = CHI }
+				AND = {
+					NOT = { country_exists = PRC }
+					tag = CHI
+				}			
+			}
+		}
+		custom_effect_tooltip = political.1.a.tt
+		clr_country_flag = anarchism_popular_movement
+		set_country_flag = anarchism_political_movement
+	}
+ # Seek popular support
+	option = {
+		name = political.1.b
+		custom_effect_tooltip = political.1.b.tt
+		clr_country_flag = anarchism_political_movement
+		clr_country_flag = anarchism_government_support
+		set_country_flag = anarchism_popular_movement
+	}
+}
+# Government Officals Support Anarchist Movements
+country_event = {
+	id = political.2
+	title = political.2.t
+	desc = political.2.d
+	picture = GFX_report_event_worker_protests
+
+	trigger = {
+		has_idea_with_trait = communist_revolutionary
+		NOT = { has_government = anarchism }
+		NOT = { has_country_flag = anarchism_government_support }
+	}
+	
+	mean_time_to_happen = {
+		days = 500
+		modifier = {
+			factor = 0.5
+			has_country_flag = anarchism_political_movement
+		}
+	}
+	
+	option = {
+		name = political.2.a
+		custom_effect_tooltip = political.2.a.tt
+		clr_country_flag = anarchism_political_movement
+		set_country_flag = anarchism_government_support
+	}
+}
+# Anarchists Storm the Capital
+country_event = {
+	id = political.3
+	title = political.3.t
+	desc = political.3.d
+	picture = GFX_report_event_gathering_protest
+	
+	trigger = {
+		has_idea_with_trait = anarchist_politician
+		NOT = { has_government = anarchism }
+		has_country_flag = anarchism_government_support
+		communism > 0.4
+		is_major = no
+		is_puppet = no
+		OR = {
+			NOT = { tag = CHI }
+			AND = {
+				NOT = { country_exists = PRC }
+				tag = CHI
+			}			
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 100
+		modifier = {
+			factor = 0.5
+			communism > 0.5
+		}
+	}
+
+	immediate = {
+		hidden_effect = { remove_ideas = communist_revolutionaries }
+	}
+	
+	option = {
+		name = political.3.a
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		add_timed_idea = { idea = reign_of_terror days = 730 }
+	}
+}
+# Soldiers Desert to Anarchist Partisans
+country_event = {
+	id = political.4
+	title = political.4.t
+	desc = political.4.d
+	picture = GFX_report_event_desertion_poster
+	
+	trigger = {
+		has_idea_with_trait = anarchist_politician
+		NOT = { has_government = anarchism }
+		communism > 0.3
+		NOT = { has_idea = anarchist_partisans_recruiting }
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					is_puppet = no
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.5
+			has_country_flag = anarchism_popular_movement
+		}
+	}
+	
+	option = {
+		name = political.4.a
+		add_popularity = {
+			ideology = anarchism
+			popularity = 0.15
+		}
+		add_ideas = anarchist_partisans_recruiting
+	}
+}
+# The [Nation] Anarchist Uprising
+country_event = {
+	id = political.5
+	title = political.5.t
+	desc = political.5.d
+	picture = GFX_report_event_gathering_protest
+	
+	trigger = {
+		has_idea_with_trait = anarchist_revolutionary
+		NOT = { has_government = anarchism }
+		anarchism > 0.4
+		OR = {
+			NOT = { tag = CHI }
+			AND = {
+				NOT = { country_exists = PRC }
+				tag = CHI
+			}			
+		}
+		if = {
+			limit = {
+				has_dlc = "Together for Victory"
+			}
+			OR = {
+				NOT = { tag = RAJ }
+				AND = {
+					tag = RAJ
+					NOT = { has_completed_focus = RAJ_swaraj }
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 365
+		modifier = {
+			factor = 0.75
+			has_country_flag = anarchism_popular_movement
+		}
+	}
+	
+	option = {
+		name = political.5.a
+		if = {
+			limit = {
+				has_government = leninism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = leninism
+				size = 0.6
+			}
+		}
+		if = {
+			limit = {
+				has_government = stalinism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = stalinism
+				size = 0.6
+			}
+		}
+		if = {
+			limit = {
+				has_government = revisionism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = revisionism
+				size = 0.6
+			}
+		}
+
+
+if = {
+			limit = {
+				has_government = democratic_socialism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = democratic_socialism
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = social_democracy
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = social_democracy
+				size = 0.6
+			}
+	  }
+    if = {
+			limit = {
+				has_government = progressive
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = progressive
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = social_liberal
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = social_liberal
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = market_liberal
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = market_liberal
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = christian_democracy
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = christian_democracy
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = conservative
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = conservative
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = reactionary
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = reactionary
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = democratic_nationalism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = democratic_nationalism
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = authoritarian_democracy
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = authoritarian_democracy
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = authoritarian
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = authoritarian
+				size = 0.6
+			}
+		}
+    
+    if = {
+			limit = {
+				has_government = absolute_monarchy
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = absolute_monarchy
+				size = 0.6
+			}
+    }
+    if = {
+			limit = {
+				has_government = religious
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = religious
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = militarism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = militarism
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = nationalism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = nationalism
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = fascism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = fascism
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = fascist_monarchy
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = fascist_monarchy
+				size = 0.6
+			}
+		}
+    if = {
+			limit = {
+				has_government = national_socialism
+			}
+			start_civil_war = {
+				ruling_party = anarchism
+				ideology = national_socialism
+				size = 0.6
+			}
+		}
+		}med_idea = { idea = reign_of_terror days = 730 }
+		remove_ideas = anarchist_revolutionaries
+	}
+	option = {
+		name = political.5.b
+	}
+}
